@@ -3,7 +3,13 @@
 mazos = {
     "Capitales": [("España", "Madrid"), ("Portugal", "Lisboa"), ("Francia", "París")],
     "Coches": [("Tesla", "Estados Unidos")],
-    "Ríos": [],
+    "Ríos": [("Miño", "Galicia")],
+}
+
+plantillas = {
+    "Capitales": "¿Cuál es la capital de {pregunta}?",
+    "Coches": "¿De qué país es {pregunta}?",
+    "Ríos": "¿Dónde desemboca el {pregunta}?",
 }
 
 while True:
@@ -27,7 +33,8 @@ while True:
     while len(tarjetas_en_mano) > 0:
         tarjeta = tarjetas_en_mano.pop(0)
         pregunta, respuesta = tarjeta
-        input(f"¿Cuál es la capital de {pregunta}? Pulsa ENTER para comprobar la respuesta.")
+        mensaje = plantillas[nombre_de_mazo].format(pregunta=pregunta)
+        input(f"{mensaje} Pulsa ENTER para comprobar la respuesta.")
         print(f"La respuesta es: {respuesta}.")
         valoración = input("¿1 Fácil / 2 Difícil / 3 Repetir? ")
         if valoración == "2":
