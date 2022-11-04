@@ -20,12 +20,14 @@ if índice == 0:
         ("Francia", "París"),
     ]
 
-    for indice in range(len(tarjetas)):
-        tarjeta = tarjetas.pop()
+    while len(tarjetas) > 0:
+        tarjeta = tarjetas.pop(0)
         pregunta, respuesta = tarjeta
         input(f"¿Cuál es la capital de {pregunta}? Pulsa ENTER para comprobar la respuesta.")
         print(f"La respuesta es: {respuesta}.")
-        valoración = input("¿1 Fácil /2 Difícil/ 3 Repetir? ")
+        valoración = input("¿1 Fácil /2 Difícil/3 Repetir? ")
+        if valoración == "3":
+            tarjetas.append(tarjeta)
 
 elif índice == 1:
     ...
