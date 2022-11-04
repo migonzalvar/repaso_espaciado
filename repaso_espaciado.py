@@ -17,9 +17,9 @@ if índice == 0:
     preguntas = ["España", "Portugal", "Francia"]
     respuestas = ["Madrid", "Lisboa", "París"]
 
-    for i in range(len(preguntas)):
-        input(f"¿Cuál es la capital de {preguntas[i]}? Pulsa ENTER para comprobar la respuesta.")
-        print(f"La respuesta es: {respuestas[i]}.")
+    for pregunta, respuesta in zip(preguntas, respuestas):
+        input(f"¿Cuál es la capital de {pregunta}? Pulsa ENTER para comprobar la respuesta.")
+        print(f"La respuesta es: {respuesta}.")
         valoración = input("¿Fácil/Difícil/Repetir? ")
 
 elif índice == 1:
