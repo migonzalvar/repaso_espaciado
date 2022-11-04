@@ -14,13 +14,18 @@ print("[DEBUG]", f"{índice=}")
 print("Has seleccionado", mazos[índice])
 
 if índice == 0:
-    preguntas = ["España", "Portugal", "Francia"]
-    respuestas = ["Madrid", "Lisboa", "París"]
+    tarjetas = [
+        ("España", "Madrid"),
+        ("Portugal", "Lisboa"),
+        ("Francia", "París"),
+    ]
 
-    for pregunta, respuesta in zip(preguntas, respuestas):
+    for indice in range(len(tarjetas)):
+        tarjeta = tarjetas.pop()
+        pregunta, respuesta = tarjeta
         input(f"¿Cuál es la capital de {pregunta}? Pulsa ENTER para comprobar la respuesta.")
         print(f"La respuesta es: {respuesta}.")
-        valoración = input("¿Fácil/Difícil/Repetir? ")
+        valoración = input("¿1 Fácil /2 Difícil/ 3 Repetir? ")
 
 elif índice == 1:
     ...
