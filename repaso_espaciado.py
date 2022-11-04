@@ -2,10 +2,8 @@
 
 mazos = ["Capitales", "Marcas de coche", "Ríos"]
 print("Escoge un mazo:")
-n = 0
-for mazo in mazos:
+for n, mazo in enumerate(mazos):
     print(n, mazo)
-    n = n + 1
 
 selección = input("? ")
 print("[DEBUG]", f"{selección=}")
