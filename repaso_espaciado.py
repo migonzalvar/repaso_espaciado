@@ -35,13 +35,14 @@ while True:
         selección = input("? ")
         print("[DEBUG]", f"{selección=}")
 
-        índice = int(selección)
-        print("[DEBUG]", f"{índice=}")
-
         try:
+            índice = int(selección)
+            print("[DEBUG]", f"{índice=}")
             mazo_escogido = mazos_con_tarjetas[índice]
+        except ValueError:
+            print("Solo acepto números.")
         except IndexError:
-            print("No entiendo.")
+            print("Usa uno de los números indicados.")
 
     print("Has seleccionado", mazo_escogido)
 
