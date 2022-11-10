@@ -17,10 +17,15 @@ MAZOS = {
 
 while True:
     print("[DEBUG]", f"{MAZOS=}")
-
     print("Escoge un mazo:")
-    nombre_de_mazos = list(MAZOS.keys())
-    for n, mazo in enumerate(nombre_de_mazos):
+
+    todos_los_mazos = list(MAZOS.keys())
+    mazos_con_preguntas = []
+    for mazo in todos_los_mazos:
+        if len(MAZOS[mazo]["tarjetas"]) > 0:
+            mazos_con_preguntas.append(mazo)
+
+    for n, mazo in enumerate(mazos_con_preguntas):
         print(n, mazo)
 
     selección = input("? ")
@@ -29,7 +34,7 @@ while True:
     índice = int(selección)
     print("[DEBUG]", f"{índice=}")
 
-    nombre_de_mazo = nombre_de_mazos[índice]
+    nombre_de_mazo = mazos_con_preguntas[índice]
 
     print("Has seleccionado", nombre_de_mazo)
 
