@@ -16,15 +16,16 @@ MAZOS = {
 }
 
 while True:
-    print("[DEBUG]", f"{MAZOS=}")
-    print("Escoge un mazo:")
-
     mazos_con_tarjetas = []
     for mazo in MAZOS:
         cantidad = len(MAZOS[mazo]["tarjetas"])
         if cantidad > 0:
             mazos_con_tarjetas.append(mazo)
 
+    if len(mazos_con_tarjetas) == 0:
+        break
+
+    print("Escoge un mazo:")
     for n, mazo in enumerate(mazos_con_tarjetas):
         cantidad = len(MAZOS[mazo]["tarjetas"])
         print(n, mazo, cantidad)
