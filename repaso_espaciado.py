@@ -15,50 +15,55 @@ MAZOS = {
     },
 }
 
-while True:
-    mazos_con_tarjetas = []
-    for mazo in MAZOS:
-        cantidad = len(MAZOS[mazo]["tarjetas"])
-        if cantidad > 0:
-            mazos_con_tarjetas.append(mazo)
-
-    if len(mazos_con_tarjetas) == 0:
-        break
-
-    mazo_escogido = None
-    while not mazo_escogido:
-        print("Escoge un mazo:")
-        for n, mazo in enumerate(mazos_con_tarjetas):
+def main():
+    while True:
+        mazos_con_tarjetas = []
+        for mazo in MAZOS:
             cantidad = len(MAZOS[mazo]["tarjetas"])
-            print(n, mazo, cantidad)
+            if cantidad > 0:
+                mazos_con_tarjetas.append(mazo)
 
-        selección = input("? ")
-        print("[DEBUG]", f"{selección=}")
+        if len(mazos_con_tarjetas) == 0:
+            break
 
-        try:
-            índice = int(selección)
-            print("[DEBUG]", f"{índice=}")
-            mazo_escogido = mazos_con_tarjetas[índice]
-        except ValueError:
-            print("Solo acepto números.")
-        except IndexError:
-            print("Usa uno de los números indicados.")
+        mazo_escogido = None
+        while not mazo_escogido:
+            print("Escoge un mazo:")
+            for n, mazo in enumerate(mazos_con_tarjetas):
+                cantidad = len(MAZOS[mazo]["tarjetas"])
+                print(n, mazo, cantidad)
 
-    print("Has seleccionado", mazo_escogido)
+            selección = input("? ")
+            print("[DEBUG]", f"{selección=}")
 
-    tarjetas_en_mano = MAZOS[mazo_escogido]["tarjetas"]
-    tarjetas_difíciles = []
-    while len(tarjetas_en_mano) > 0:
-        tarjeta = tarjetas_en_mano.pop(0)
-        pregunta, respuesta = tarjeta
-        plantilla = MAZOS[mazo_escogido]["plantilla"]
-        mensaje = plantilla.format(pregunta=pregunta)
-        input(f"{mensaje} Pulsa ENTER para comprobar la respuesta.")
-        print(f"La respuesta es: {respuesta}.")
-        valoración = input("¿1 Fácil / 2 Difícil / 3 Repetir? ")
-        if valoración == "2":
-            tarjetas_difíciles.append(tarjeta)
-        elif valoración == "3":
-            tarjetas_en_mano.append(tarjeta)
+            try:
+                índice = int(selección)
+                print("[DEBUG]", f"{índice=}")
+                mazo_escogido = mazos_con_tarjetas[índice]
+            except ValueError:
+                print("Solo acepto números.")
+            except IndexError:
+                print("Usa uno de los números indicados.")
 
-    MAZOS[mazo_escogido]["tarjetas"] = tarjetas_difíciles
+        print("Has seleccionado", mazo_escogido)
+
+        tarjetas_en_mano = MAZOS[mazo_escogido]["tarjetas"]
+        tarjetas_difíciles = []
+        while len(tarjetas_en_mano) > 0:
+            tarjeta = tarjetas_en_mano.pop(0)
+            pregunta, respuesta = tarjeta
+            plantilla = MAZOS[mazo_escogido]["plantilla"]
+            mensaje = plantilla.format(pregunta=pregunta)
+            input(f"{mensaje} Pulsa ENTER para comprobar la respuesta.")
+            print(f"La respuesta es: {respuesta}.")
+            valoración = input("¿1 Fácil / 2 Difícil / 3 Repetir? ")
+            if valoración == "2":
+                tarjetas_difíciles.append(tarjeta)
+            elif valoración == "3":
+                tarjetas_en_mano.append(tarjeta)
+
+        MAZOS[mazo_escogido]["tarjetas"] = tarjetas_difíciles
+
+
+if __name__ == "__main__":
+    main()
